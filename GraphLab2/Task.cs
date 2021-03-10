@@ -54,7 +54,7 @@ namespace GraphLab2
             return ab.b;
         }
         public static float NewtonMethod(Func<float, float> func, Interval ab, float error)
-        {
+        { // метод ньютона (касательных)
             float der(Func<float, float> _func, float _x)
             {
                 return (_func(_x + error) - _func(_x - error)) / (error * 2);
