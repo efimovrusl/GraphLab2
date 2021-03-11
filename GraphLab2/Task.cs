@@ -24,11 +24,27 @@ namespace GraphLab2
         {
             return (float)Math.Exp(x) - 10 * x;
         }
-
-        public static float BisectionMethod(Func<float, float> func, Interval ab, float error)
+        private static float TESTder1(float x)
+        {
+            return (float)Math.Exp(x) - 10;
+        }
+        private static float TESTder2(float x)
+        {
+            return (float)Math.Exp(x);
+        }
+        private static float der(Func<float, float> func, float x, float eps, int power = 1)
+        {
+            if (power > 1)
+                return (der(func, x + eps, eps, power - 1) -
+                    der(func, x - eps, eps, power - 1)) / (eps * 2);
+            else
+                return (func(x + eps) - func(x - eps)) / (eps * 2);
+        }
+        public static List<float> BisectionMethod(Func<float, float> func, Interval ab, float error)
         { // метод половинного деления
             if (func(ab.a) * func(ab.b) >= 0)
                 throw new Exception("Potentially no roots!");
+            List<float> results = new List<float>();
             float c = ab.a;
             while ((ab.b - ab.a >= error))
             {
@@ -39,35 +55,55 @@ namespace GraphLab2
                     ab.b = c;
                 else
                     ab.a = c;
+                results.Add(c);
             }
-            return c;
+            return results;
         }
-        public static float ChordMethod(Func<float, float> func, Interval ab, float error)
+        public static List<float> ChordMethod(Func<float, float> func, Interval ab, float error)
         { // метод хорд
+            List<float> results = new List<float>();
             while (Math.Abs(ab.b - ab.a) > error)
             {
                 ab.a = ab.b - (ab.b - ab.a) *
                     func(ab.b) / (func(ab.b) - func(ab.a));
                 ab.b = ab.a - (ab.a - ab.b) *
                     func(ab.a) / (func(ab.a) - func(ab.b));
+                results.Add(Math.Abs(ab.a + ab.b) / 2);
             }
-            return ab.b;
+            return results;
         }
-        public static float NewtonMethod(Func<float, float> func, Interval ab, float error)
+        public static List<float> NewtonMethod(Func<float, float> func, Interval ab, float error)
         { // метод ньютона (касательных)
-            float der(Func<float, float> _func, float _x)
+            List<float> results = new List<float>();
+            ab.b = ab.a - func(ab.a) / der(func, ab.a, error);
+            while (Math.Abs(ab.b - ab.a) / 2 > error)
             {
-                return (_func(_x + error) - _func(_x - error)) / (error * 2);
+                ab.a = ab.b;
+                ab.b = ab.a - func(ab.a) / der(func, ab.a, error);
+                results.Add(ab.b);
             }
-            float x0, x1 = ab.a;
+            return results;
+        }
+        //public static List<float> CombinedMethod(Func<float, float> func, Interval ab, float error)
+        //{
+
+        //}
+        public static List<float> CombinedMethod(Func<float, float> func, Interval ab, float error)
+        { // комбинированный метод хорд и касательных (Ньютона)
+            List<float> results = new List<float>();
             do
             {
-                x0 = x1;
-                x1 = x0 - func(x0) / der(func, x0);
-            } while (Math.Abs(x1 - x0) > error);
-            return x1;
+                if (func(ab.a) * der(func, ab.a, error, 2) < 0)
+                    ab.a += (ab.b - ab.a) / (func(ab.a) - func(ab.b)) * func(ab.a);
+                else
+                    ab.a -= func(ab.a) / der(func, ab.a, error, 1);
+                if (func(ab.b) * der(func, ab.b, error, 2) < 0)
+                    ab.b += (ab.a - ab.b) / (func(ab.b) - func(ab.a)) * func(ab.b);
+                else
+                    ab.b -= func(ab.b) / der(func, ab.b, error, 1);
+                results.Add(Math.Abs(ab.a + ab.b) / 2);
+            } while (Math.Abs(ab.a - ab.b) > 2 * error);
+            return results;
         }
-
-
     }
 }

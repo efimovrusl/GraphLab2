@@ -12,33 +12,71 @@ namespace GraphLab2
 {
     public partial class Form : System.Windows.Forms.Form
     {
+        Graphics tableGraphics, mainG;
+        Table table;
+
         public Form()
         {
             InitializeComponent();
+            tableGraphics = tablePanel1.CreateGraphics();
+            mainG = panel1.CreateGraphics();
 
-            float shit;
-            
-            shit = Task.BisectionMethod(Task.Function, Task.interval, 0.0001f);
-            Console.WriteLine(shit + ", " + Task.Function(shit));
+            List<float> govno = Task.CombinedMethod(Task.Function, Task.interval, 0.00001f);
+            foreach (float shit in govno)
+            {
+                Console.WriteLine($"Govno: {shit}");
+            }
+        }
+        private void fillTable(List<float> arr, Func<float, float> func)
+        {
+            tablePanel1.Refresh();
+            table = new Table(tableGraphics, 2, arr.Count(), tablePanel1.Height, tablePanel1.Width);
+            for (int i = 0; i < arr.Count; i++)
+            {
+                table.values[0, i] =
+                    String.Format("{0:0.0000}", arr.ToArray()[i]);
+                table.values[1, i] =
+                    String.Format("{0:0.0000}", Task.Function(arr.ToArray()[i]));
+            }
+            table.drawTable();
+        }
+        private void button1_Click(object sender, EventArgs e)
+        { // bisection method
+            List<float> currentTableX = Task.BisectionMethod(Task.Function, Task.interval, 0.00001f);
+            fillTable(currentTableX, Task.Function);
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        { // chord method
+            List<float> currentTableX = Task.ChordMethod(Task.Function, Task.interval, 0.00001f);
+            fillTable(currentTableX, Task.Function);
+        }
 
-            shit = Task.ChordMethod(Task.Function, Task.interval, 0.0001f);
-            Console.WriteLine(shit + ", " + Task.Function(shit));
+        private void button3_Click(object sender, EventArgs e)
+        { // newton method
+            List<float> currentTableX = Task.NewtonMethod(Task.Function, Task.interval, 0.00001f);
+            fillTable(currentTableX, Task.Function);
+        }
 
-            shit = Task.NewtonMethod(Task.Function, Task.interval, 0.0001f);
-            Console.WriteLine(shit + ", " + Task.Function(shit));
+        private void button4_Click(object sender, EventArgs e)
+        { // chord + newton method
+            List<float> currentTableX = Task.CombinedMethod(Task.Function, Task.interval, 0.00001f);
+            fillTable(currentTableX, Task.Function);
+        }
+    }
 
+    class Graph
+    {
+        public Graph()
+        {
 
         }
     }
 
-
-
-
     class Table
     {
         Graphics g;
-        Font fontArial = new Font("Arial", 7);
+        Font fontArial = new Font("Arial", 8);
         SolidBrush brushBlack = new SolidBrush(Color.Black);
         Pen grayPen = new Pen(Color.DarkGray);
         Pen blackPen = new Pen(Color.Black);
