@@ -84,10 +84,6 @@ namespace GraphLab2
             }
             return results;
         }
-        //public static List<float> CombinedMethod(Func<float, float> func, Interval ab, float error)
-        //{
-
-        //}
         public static List<float> CombinedMethod(Func<float, float> func, Interval ab, float error)
         { // комбинированный метод хорд и касательных (Ньютона)
             List<float> results = new List<float>();
