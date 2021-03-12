@@ -123,7 +123,7 @@ namespace GraphLab2
                 g.DrawLine(new Pen(Color.Black, 2),
                     TransX(xStep * i + xMinFocus), margin,
                     TransX(xStep * i + xMinFocus), margin / 2);
-                g.DrawString($"{Math.Round(xStep * i + xMinFocus, 6)}", fontArial8, brushBlack, 
+                g.DrawString($"{Math.Round(xStep * i + xMinFocus, 5)}", fontArial8, brushBlack, 
                     TransX(xStep * i + xMinFocus) + 2, 0);
             }
             Console.WriteLine(xStep);
@@ -132,7 +132,7 @@ namespace GraphLab2
                 g.DrawLine(new Pen(Color.Black, 2),
                     margin, TransY(yStep * i + yMinFocus),
                     margin / 2, TransY(yStep * i + yMinFocus));
-                g.DrawString($"{Math.Round(yStep * i + yMinFocus, 6)}", fontArial8, brushBlack,
+                g.DrawString($"{Math.Round(yStep * i + yMinFocus, 5)}", fontArial8, brushBlack,
                     margin + 2, TransY(yStep * i + yMinFocus) + 2);
             }
         }
