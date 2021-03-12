@@ -25,11 +25,11 @@ namespace GraphLab2
             return (float)Math.Exp(x) - 10 * x;
         }
         private static float TESTder1(float x)
-        {
+        { // isn't used in calculations
             return (float)Math.Exp(x) - 10;
         }
         private static float TESTder2(float x)
-        {
+        { // isn't used in calculations
             return (float)Math.Exp(x);
         }
         private static float der(Func<float, float> func, float x, float eps, int power = 1)
