@@ -39,11 +39,6 @@ namespace DiscreteMathLab1
             Solution.Input2 = textBox2.Text.ToCharArray();
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private String checkInputCorrectness(String input)
         {
             String filtered = "";
@@ -77,7 +72,6 @@ namespace DiscreteMathLab1
         private void button5_Click(object sender, EventArgs e)
         {
             textBox3.Text = Solution.Task5();
-
         }
     }
 }
