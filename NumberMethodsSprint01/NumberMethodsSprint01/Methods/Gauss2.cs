@@ -50,16 +50,20 @@ namespace NumberMethodsSprint01.Methods
         /// <summary>
         /// To make simple validation of the matrix to be used.
         /// </summary>
-        /// <param name="matrix">Multidimensional array matrix.</param>
-        /// <returns>True: if algorithm can be use for given matrix;
-        /// False: Otherwise. </returns>
+        /// 
+        /// <param 
+        /// name="matrix">Multidimensional array matrix.
+        /// </param>
         private static bool CanMatrixBeUsed(float[,] matrix) => 
             matrix?.Length == RowCount * (RowCount + 1) && RowCount > 1;
 
         /// <summary>
         /// To prepare given matrix by pivoting rows.
         /// </summary>
-        /// <param name="matrix">Input matrix.</param>
+        /// <param 
+        /// name="matrix">Input matrix.
+        /// </param>
+        /// 
         /// <returns>Matrix.</returns>
         private static bool PivotMatrix(ref float[,] matrix)
         {
