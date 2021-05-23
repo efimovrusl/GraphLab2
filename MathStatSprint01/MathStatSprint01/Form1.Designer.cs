@@ -38,9 +38,18 @@ namespace MathStatSprint01
             System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.button7 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -49,15 +58,8 @@ namespace MathStatSprint01
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -75,6 +77,28 @@ namespace MathStatSprint01
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(982, 405);
             this.panel1.TabIndex = 0;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(356, 36);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(80, 21);
+            this.checkBox2.TabIndex = 4;
+            this.checkBox2.Text = "polygon";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(356, 7);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(103, 21);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.Text = "histogramm";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // chart2
             // 
@@ -130,6 +154,8 @@ namespace MathStatSprint01
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button9);
+            this.panel2.Controls.Add(this.button8);
             this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.textBox3);
             this.panel2.Controls.Add(this.button5);
@@ -150,6 +176,79 @@ namespace MathStatSprint01
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(982, 226);
             this.panel2.TabIndex = 1;
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Micra", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(482, 161);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(159, 62);
+            this.button6.TabIndex = 21;
+            this.button6.Text = "TASK 3";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // textBox3
+            // 
+            this.textBox3.Font = new System.Drawing.Font("Cascadia Code", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(648, 30);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox3.Size = new System.Drawing.Size(327, 128);
+            this.textBox3.TabIndex = 20;
+            // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("Micra", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(315, 161);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(159, 62);
+            this.button5.TabIndex = 19;
+            this.button5.Text = "TASK 1";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(159, 195);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(150, 28);
+            this.button4.TabIndex = 18;
+            this.button4.Text = "RANDOM 4";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(159, 161);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(150, 28);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "RANDOM 3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(3, 195);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(150, 28);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "RANDOM 2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 161);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 28);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "RANDOM 1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // comboBox3
             // 
@@ -250,100 +349,27 @@ namespace MathStatSprint01
             this.textBox1.Size = new System.Drawing.Size(306, 128);
             this.textBox1.TabIndex = 0;
             // 
-            // checkBox1
+            // button8
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(356, 7);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(103, 21);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "histogramm";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.button8.Font = new System.Drawing.Font("Micra", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(649, 161);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(159, 62);
+            this.button8.TabIndex = 22;
+            this.button8.Text = "TASK 4";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
-            // checkBox2
+            // button9
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(356, 36);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(80, 21);
-            this.checkBox2.TabIndex = 4;
-            this.checkBox2.Text = "polygon";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(3, 161);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 28);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "RANDOM 1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(3, 195);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 28);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "RANDOM 2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(159, 161);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(150, 28);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "RANDOM 3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(159, 195);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(150, 28);
-            this.button4.TabIndex = 18;
-            this.button4.Text = "RANDOM 4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("Micra", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(315, 161);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(110, 62);
-            this.button5.TabIndex = 19;
-            this.button5.Text = "TASK1";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Cascadia Code", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(648, 30);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox3.Size = new System.Drawing.Size(327, 128);
-            this.textBox3.TabIndex = 20;
-            // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Micra", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(431, 161);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(110, 62);
-            this.button6.TabIndex = 21;
-            this.button6.Text = "TASK3";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button9.Font = new System.Drawing.Font("Micra", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Location = new System.Drawing.Point(816, 161);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(159, 62);
+            this.button9.TabIndex = 23;
+            this.button9.Text = "TASK 5";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // Form1
             // 
@@ -390,6 +416,8 @@ namespace MathStatSprint01
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
     }
 }
 

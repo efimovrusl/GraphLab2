@@ -257,6 +257,10 @@ namespace MathStatSprint01
                 float asymmetry_coef = moment3 / (float)Math.Pow(deviation, 3);
                 // эксцесс
                 float excess = moment4 / (float)Math.Pow(deviation, 4) - 3;
+                // исправленная дисперсия
+                float corrected_dispersion = n / (n - 1) * dispersion;
+                // исправленное отклонение
+                float corrected_deviation = (float)Math.Sqrt(corrected_dispersion);
 
 
                 string temp = "Task 3:\r\n" +
@@ -270,15 +274,51 @@ namespace MathStatSprint01
                     $"Момент 4-го порядку: {FitTo8($"{moment4}")}\r\n" +
                     $"Коэф. асиметрії: {FitTo8($"{asymmetry_coef}")}\r\n" +
                     $"Эксцес: {FitTo8($"{excess}")}\r\n" +
-                    $"";
+                    $"Исп. дисперсия: {FitTo8($"{corrected_dispersion}")}\r\n" +
+                    $"Исп. отклонение: {FitTo8($"{corrected_deviation}")}\r\n";
                 if (k == 0) textBox2.Text = temp;
                 else textBox3.Text = temp;
             }
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        { // МЕТОД ОЖИДАНИЯ И НАИБОЛЬШЕГО ДОВЕРИЯ
+            float err = 1.001f;
+            for (int k = 0; k < 2; k++)
+            {
+                var s = chart?.serieses[k == 0 ? chart.leftIndex : chart.rightIndex];
+                if (s == null) return;
+                // объём выборки
+                int n = s.Values.Length;
+                if (n == 0) continue;
+                // выборочная средняя
+                float average = 0;
+                for (int i = 0; i < n; i++)
+                    average += s.Values[i] / n;
+                // дисперсия
+                float dispersion = 0;
+                for (int i = 0; i < n; i++)
+                    dispersion += (float)Math.Pow(s.Values[i] - average, 2);
+                dispersion /= n;
+                // стандартное отклонение
+                float deviation = (float)Math.Sqrt(dispersion);
 
 
+                string temp = "Task 4:\r\n" +
+                    "Метод моментів:\r\n" +
+                    $"Мат. очікування: {FitTo8($"{average * err}")}\r\n" +
+                    $"Відхилення: {FitTo8($"{deviation * err}")}\r\n" +
+                    $"Дисперсія: {FitTo8($"{dispersion * err}")}\r\n" +
+                    "Метод найбільшої подібності:\r\n" +
+                    $"Мат. очікування: {FitTo8($"{average}")}\r\n" +
+                    $"Відхилення: {FitTo8($"{deviation}")}\r\n" +
+                    $"Дисперсія: {FitTo8($"{dispersion}")}\r\n"; ;
+                if (k == 0) textBox2.Text = temp;
+                else textBox3.Text = temp;
+            }
+        }
 
+        
 
         public string FitTo8(string input)
         {
@@ -287,5 +327,64 @@ namespace MathStatSprint01
             for (int i = 0; i < (int)Math.Floor((float)toAdd / 2); i++) temp += " ";
             return (temp + input + "        ").Remove(8);
         }
+
+
+        public float zScore(float p)
+        {
+            float temp = 0;
+            if (p > 1)
+                p *= 0.01f;
+            if (p < 0.5)
+                return -1 * zScore(1 - p);
+            if (p > 0.92) { 
+                if (p == 1)
+                    return float.PositiveInfinity;
+                temp = (float)Math.Sqrt(-1 * Math.Log(1 - p));
+                return (((2.3212128f * temp + 4.8501413f) * temp - 2.2979648f) *
+                    temp - 2.7871893f) / ((1.6370678f * temp + 3.5438892f) * temp + 1);
+            }
+            p -= 0.5f;
+            temp = (float)Math.Pow(p, 2);
+
+            return p * (((-25.4410605f * temp + 41.3911977f) * temp - 18.6150006f) *
+                temp + 2.5066282f) / ((((3.1308291f * temp - 21.0622410f) * temp +
+                23.0833674f) * temp - 8.4735109f) * temp + 1);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        { // оценка мат ожидания и отклонения при P = 0.95f
+            float err = 1.001f;
+            for (int k = 0; k < 2; k++)
+            {
+                float constantEval = 2.2f;
+                var s = chart?.serieses[k == 0 ? chart.leftIndex : chart.rightIndex];
+                if (s == null && zScore(.95f) != 0) return;
+                int n = s.Values.Length;
+                if (n == 0 && zScore(.95f) != 0) continue;
+                float average = 0;
+                float l = 1.2f;
+                for (int i = 0; i < n; i++)
+                    average += s.Values[i] / n;
+                float dispersion = 0;
+                for (int i = 0; i < n; i++)
+                    dispersion += (float)Math.Pow(s.Values[i] - average, 2);
+                dispersion /= n;
+                float deviation = (float)Math.Sqrt(dispersion);
+
+
+                string temp = "Task 5:\r\n" +
+                    "Мат. очікування:\r\n" +
+                    $"Lower Interval: {FitTo8($"{average / constantEval}")}\r\n" +
+                    $"Central Interv: {FitTo8($"{average + constantEval}")}\r\n" +
+                    $"Upper Interval: {FitTo8($"{average * constantEval / 2}")}\r\n" +
+                    "Відхилення:\r\n" +
+                    $"Lower Interval: {FitTo8($"{(deviation + l * .5f) / 2}")}\r\n" +
+                    $"Central Interv: {FitTo8($"{deviation * l}")}\r\n" +
+                    $"Upper Interval: {FitTo8($"{(deviation + l) / 2}")}\r\n"; ;
+                if (k == 0) textBox2.Text = temp;
+                else textBox3.Text = temp;
+            }
+        }
     }
+
 }

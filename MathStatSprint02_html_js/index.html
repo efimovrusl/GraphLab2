@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sprint 2 - Тестування статистичних гіпотез</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/script.js" type="module" defer></script>
+</head>
+<body>
+    <div class="tasks">
+        <h1>Sprint 2 - Тестування статистичних гіпотез</h1>
+        <div class="container task-data">
+            <div class="action-input">
+                <div class="section">
+                    <label for="amount">Кількість інтервалів:</label>
+                    <input type="number" id="amount" value="10" min="1" max="50">
+                </div>
+                <div class="section">
+                    <label for="significance">Рівень значущості:</label>
+                    <input type="text" id="significance" class="content centered" value="0.05" data-significance readonly >
+                </div>
+                <div class="section">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="text" value="Початок інтервалу" class="centered" readonly></th>
+                                <th><input type="text" value="Кінець інтервалу" class="centered" readonly></th>
+                                <th><input type="text" value="Значення інтервалу" class="centered" readonly></th>
+                            </tr>
+                        </thead>
+                        <tbody class="data">
+                            <tr>
+                                <td><input type="text" placeholder="3.45" data-start></td>
+                                <td><input type="text" placeholder="3.55" data-end></td>
+                                <td><input type="text" placeholder="10" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="3.55" data-start></td>
+                                <td><input type="text" placeholder="3.65" data-end></td>
+                                <td><input type="text" placeholder="16" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="3.65" data-start></td>
+                                <td><input type="text" placeholder="3.75" data-end></td>
+                                <td><input type="text" placeholder="22" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="3.75" data-start></td>
+                                <td><input type="text" placeholder="3.85" data-end></td>
+                                <td><input type="text" placeholder="30" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="3.85" data-start></td>
+                                <td><input type="text" placeholder="3.95" data-end></td>
+                                <td><input type="text" placeholder="34" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="3.95" data-start></td>
+                                <td><input type="text" placeholder="4.05" data-end></td>
+                                <td><input type="text" placeholder="20" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="4.05" data-start></td>
+                                <td><input type="text" placeholder="4.15" data-end></td>
+                                <td><input type="text" placeholder="14" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="4.15" data-start></td>
+                                <td><input type="text" placeholder="4.25" data-end></td>
+                                <td><input type="text" placeholder="10" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="4.25" data-start></td>
+                                <td><input type="text" placeholder="4.35" data-end></td>
+                                <td><input type="text" placeholder="6" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="4.35" data-start></td>
+                                <td><input type="text" placeholder="4.45" data-end></td>
+                                <td><input type="text" placeholder="4" data-value></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="container task-1">
+            <div class="action-header">
+                <div class="section">
+                    <span class="title without">Task 1 - Тест Пірсона:</span>
+                </div>
+            </div>
+            <div class="action-calculation">
+                <div class="section">
+                    <input type="button" value="Підрахунок" class="calculate">
+                </div>
+            </div>
+            <div class="action-answer">
+                <div class="section">
+                    <span class="title">Інтервальний статистичний ряд:</span>
+                    <table>
+                        <thead data-thead-interval></thead>
+                        <tbody data-tbody-interval></tbody>
+                    </table>
+                    <canvas id="chart-1" class="margin-top"></canvas>
+                </div>
+                <div class="section">
+                    <span class="title">Гіпотеза:</span>
+                    <div class="section">
+                        <span class="title">H0:</span>
+                        <input type="text" data-hypothesis-0 readonly>
+                    </div>
+                    <div class="section">
+                        <span class="title">Ітераційна таблиця:</span>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th><input type="text" value="Xi" class="centered content" readonly></th>
+                                    <th><input type="text" value="Xi+1" class="centered content" readonly></th>
+                                    <th><input type="text" value="ni" class="centered content" readonly></th>
+                                    <th><input type="text" value="x1" class="centered content" readonly></th>
+                                    <th><input type="text" value="x2" class="centered content" readonly></th>
+                                    <th><input type="text" value="F(x1)" class="centered content" readonly></th>
+                                    <th><input type="text" value="F(x2)" class="centered content" readonly></th>
+                                    <th><input type="text" value="pi" class="centered content" readonly></th>
+                                    <th><input type="text" value="ni'" class="centered content" readonly></th>
+                                    <th><input type="text" value="Ki'" class="centered content" readonly></th>
+                                </tr>
+                            </thead>
+                            <tbody data-tbody-iteration></tbody>
+                        </table>
+                    </div>
+                    <div class="section">
+                        <span class="title">Ступінь свободи:</span>
+                        <input type="text" data-hypothesis-0-power readonly>
+                    </div>
+                    <div class="section">
+                        <span class="title">Спостережуване значення P:</span>
+                        <input type="text" data-hypothesis-0-observed readonly>
+                    </div>
+                    <div class="section">
+                        <span class="title">Спостережуване значення p:</span>
+                        <input type="text" data-hypothesis-0-critical readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container task-2">
+            <div class="action-header">
+                <div class="section">
+                    <span class="title without">Task 2 - Тест Фішера:</span>
+                </div>
+            </div>
+            <div class="action-input">
+                <div class="section">
+                    <label for="amount">Кількість інтервалів:</label>
+                    <input type="number" id="amount" value="10" min="1" max="50">
+                </div>
+                <div class="section">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="text" value="Початок інтервалу" class="centered" readonly></th>
+                                <th><input type="text" value="Кінець інтервалу" class="centered" readonly></th>
+                                <th><input type="text" value="Значення інтервалу" class="centered" readonly></th>
+                            </tr>
+                        </thead>
+                        <tbody class="data">
+                            <tr>
+                                <td><input type="text" placeholder="3.45" data-start></td>
+                                <td><input type="text" placeholder="3.55" data-end></td>
+                                <td><input type="text" placeholder="8" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="3.55" data-start></td>
+                                <td><input type="text" placeholder="3.65" data-end></td>
+                                <td><input type="text" placeholder="13" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="3.65" data-start></td>
+                                <td><input type="text" placeholder="3.75" data-end></td>
+                                <td><input type="text" placeholder="18" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="3.75" data-start></td>
+                                <td><input type="text" placeholder="3.85" data-end></td>
+                                <td><input type="text" placeholder="24" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="3.85" data-start></td>
+                                <td><input type="text" placeholder="3.95" data-end></td>
+                                <td><input type="text" placeholder="32" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="3.95" data-start></td>
+                                <td><input type="text" placeholder="4.05" data-end></td>
+                                <td><input type="text" placeholder="28" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="4.05" data-start></td>
+                                <td><input type="text" placeholder="4.15" data-end></td>
+                                <td><input type="text" placeholder="21" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="4.15" data-start></td>
+                                <td><input type="text" placeholder="4.25" data-end></td>
+                                <td><input type="text" placeholder="18" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="4.25" data-start></td>
+                                <td><input type="text" placeholder="4.35" data-end></td>
+                                <td><input type="text" placeholder="12" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="4.35" data-start></td>
+                                <td><input type="text" placeholder="4.45" data-end></td>
+                                <td><input type="text" placeholder="6" data-value></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="action-calculation">
+                <div class="section">
+                    <input type="button" value="Підрахунок" class="calculate">
+                </div>
+            </div>
+            <div class="action-answer">
+                <span class="title">Гіпотеза:</span>
+                <div class="section">
+                    <span class="title">H0:</span>
+                    <input type="text" data-hypothesis-0 readonly>
+                </div>
+                <div class="section">
+                    <span class="title">Ступінь свободи 1:</span>
+                    <input type="text" data-hypothesis-0-power-1 readonly>
+                </div>
+                <div class="section">
+                    <span class="title">Ступінь свободи 2:</span>
+                    <input type="text" data-hypothesis-0-power-2 readonly>
+                </div>
+                <div class="section">
+                    <span class="title">Відхилення 1:</span>
+                    <input type="text" data-hypothesis-0-variance-1 readonly>
+                </div>
+                <div class="section">
+                    <span class="title">Відхилення 2:</span>
+                    <input type="text" data-hypothesis-0-variance-2 readonly>
+                </div>
+                <div class="section">
+                    <span class="title">Спостережуване значення F:</span>
+                    <input type="text" data-hypothesis-0-observed readonly>
+                </div>
+                <div class="section">
+                    <span class="title">Критична точка f:</span>
+                    <input type="text" data-hypothesis-0-critical readonly>
+                </div>
+            </div>
+        </div>
+        <div class="container task-3">
+            <div class="action-header">
+                <div class="section">
+                    <span class="title without">Task 3 - Тест Стьюдента</span>
+                </div>
+            </div>
+            <div class="action-input">
+                <div class="section">
+                    <label for="amount">Кількість інтервалів:</label>
+                    <input type="number" id="amount" value="10" min="1" max="50">
+                </div>
+                <div class="section">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><input type="text" value="Початок інтервалу" class="centered" readonly></th>
+                                <th><input type="text" value="Кінець інтервалу" class="centered" readonly></th>
+                                <th><input type="text" value="Значення інтервалу" class="centered" readonly></th>
+                            </tr>
+                        </thead>
+                        <tbody class="data">
+                            <tr>
+                                <td><input type="text" placeholder="3.45" data-start></td>
+                                <td><input type="text" placeholder="3.55" data-end></td>
+                                <td><input type="text" placeholder="8" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="3.55" data-start></td>
+                                <td><input type="text" placeholder="3.65" data-end></td>
+                                <td><input type="text" placeholder="13" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="3.65" data-start></td>
+                                <td><input type="text" placeholder="3.75" data-end></td>
+                                <td><input type="text" placeholder="18" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="3.75" data-start></td>
+                                <td><input type="text" placeholder="3.85" data-end></td>
+                                <td><input type="text" placeholder="24" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="3.85" data-start></td>
+                                <td><input type="text" placeholder="3.95" data-end></td>
+                                <td><input type="text" placeholder="32" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="3.95" data-start></td>
+                                <td><input type="text" placeholder="4.05" data-end></td>
+                                <td><input type="text" placeholder="28" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="4.05" data-start></td>
+                                <td><input type="text" placeholder="4.15" data-end></td>
+                                <td><input type="text" placeholder="21" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="4.15" data-start></td>
+                                <td><input type="text" placeholder="4.25" data-end></td>
+                                <td><input type="text" placeholder="18" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="4.25" data-start></td>
+                                <td><input type="text" placeholder="4.35" data-end></td>
+                                <td><input type="text" placeholder="12" data-value></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="4.35" data-start></td>
+                                <td><input type="text" placeholder="4.45" data-end></td>
+                                <td><input type="text" placeholder="6" data-value></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="action-calculation">
+                <div class="section">
+                    <input type="button" value="Підрахунок" class="calculate">
+                </div>
+            </div>
+            <div class="action-answer">
+                <span class="title">Гіпотеза:</span>
+                <div class="section">
+                    <span class="title">H0 (Z-test):</span>
+                    <input type="text" data-hypothesis-0-z readonly>
+                </div>
+                <div class="section">
+                    <span class="title">H0 (T-test):</span>
+                    <input type="text" data-hypothesis-0-t readonly>
+                </div>
+                <div class="section">
+                    <span class="title">Спостережуване значення|Z|:</span>
+                    <input type="text" data-hypothesis-0-observed-z readonly>
+                </div>
+                <div class="section">
+                    <span class="title">Спостережуване значення|T|:</span>
+                    <input type="text" data-hypothesis-0-observed-t readonly>
+                </div>
+                <div class="section">
+                    <span class="title">Критична точка z:</span>
+                    <input type="text" data-hypothesis-0-critical-z readonly>
+                </div>
+                <div class="section">
+                    <span class="title">Критична точка t:</span>
+                    <input type="text" data-hypothesis-0-critical-t readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

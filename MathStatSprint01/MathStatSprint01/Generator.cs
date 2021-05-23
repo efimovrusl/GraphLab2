@@ -113,5 +113,6 @@ namespace MathStatSprint01
 
             return result.ToArray();
         }
+
     }
 }
